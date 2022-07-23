@@ -1,5 +1,5 @@
 <template>
-  <RsvpStatus count="0" isAttending="true"></RsvpStatus>
+  <RsvpStatus rsvp-count="10" :is-attending="true"></RsvpStatus>
 </template>
 
 <script>

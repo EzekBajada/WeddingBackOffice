@@ -1,18 +1,16 @@
 <template>
-<div class="flex flex-row h-screen">
-    <div class="rounded-lg bg-green-500 h-1/2 w-1/2">
-      {{testVar}}
-    </div>
-
-    <div class="rounded-lg bg-red-500 h-1/2 w-1/2">
-      {{testVar}}
-    </div>
-</div>
+  <div class=" p-10 rounded-lg text-lg text-white"
+       :class="props.isAttending ? 'bg-green-500' : 'bg-red-500'" >
+    {{ props.rsvpCount }}
+  </div>
 </template>
 
 <script setup>
-  import { defineProps } from "vue";
+  import { defineProps} from "vue";
 
-  const testVar = 2
-  defineProps({a: String})
+  const props = defineProps({
+    rsvpCount: Number,
+    isAttending: Boolean
+  });  
+
 </script>
