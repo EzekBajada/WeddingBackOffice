@@ -19,10 +19,20 @@
 
 <script>
 import RsvpStatus from './components/RsvpStatus.vue'
+import axios from 'axios'
 
 export default {
   components: {
     RsvpStatus
+  },
+  created(){
+    console.log('tsest')
+    axios.get(process.env.VUE_APP_BASE_URL + 'Guests', {
+      headers : {
+        'X-API-Key': process.env.VUE_APP_API_KEY
+      }
+    })
+    .then(response => console.log(response));
   }
 }
 </script>
