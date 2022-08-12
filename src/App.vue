@@ -26,13 +26,18 @@ export default {
     RsvpStatus
   },
   created(){
-    console.log('tsest')
+    var guests;
+
     axios.get(process.env.VUE_APP_BASE_URL + 'Guests', {
       headers : {
         'X-API-Key': process.env.VUE_APP_API_KEY
       }
     })
-    .then(response => console.log(response));
+    .then(response => {
+      guests = response;
+      console.log(response)
+      console.log(guests)
+    });
   }
 }
 </script>
