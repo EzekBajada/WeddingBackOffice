@@ -3,12 +3,10 @@
       :class="{'bg-green-500': props.isAttending, 'bg-red-500': !props.isAttending}">
     {{ props.rsvpCount }}
   </div>
-  <div>{{localVar}}</div>
 </template>
 
 <script setup>
   import { defineProps} from "vue";
-
   const props = defineProps({
     rsvpCount: Number,
     isAttending: Boolean
