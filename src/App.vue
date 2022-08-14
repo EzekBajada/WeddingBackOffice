@@ -5,26 +5,25 @@
         <div class="flex items-center justify-center font-moonBold">
           <h1>Attending</h1>
         </div>
-        <RsvpStatus :rsvp-count="result.attending" :is-attending="true"></RsvpStatus>
+        <rsvp-status :rsvp-count="attending" :is-attending="true"></rsvp-status>
       </div>
     </div>
     <div class="w-1/2 ml-2">
       <div class="flex items-center justify-center font-moonBold">
         <h1>Not Attending</h1>
       </div>
-      <RsvpStatus :rsvp-count="result.notAttending" :is-attending="false"></RsvpStatus>
+      <rsvp-status :rsvp-count="notAttending" :is-attending="false"></rsvp-status>
     </div>
   </div>
 </template>
 
 <script setup>
-import RsvpStatus from './components/RsvpStatus.vue'
-import axios from 'axios'
-
-    var result = {
-      attending: 0,
-      notAttending: 0
-    }
+    import  axios  from 'axios'
+    import { ref } from 'vue'
+    import RsvpStatus from './components/RsvpStatus.vue';
+    
+    const attending = ref(0);
+    const notAttending = ref(0);
 
     axios.get(process.env.VUE_APP_BASE_URL + 'Guests', {
       headers : {
@@ -32,7 +31,7 @@ import axios from 'axios'
       }
     })
     .then(response => {
-      result.attending = Number.parseInt(response.data.filter(x=> x.isAttending).length);
-      result.notAttending = Number.parseInt(response.data.filter(x=> !x.isAttending).length);
+      attending.value = response.data.filter(x=> x.isAttending).length;
+      notAttending.value = response.data.filter(x=> !x.isAttending).length;
     });
 </script>

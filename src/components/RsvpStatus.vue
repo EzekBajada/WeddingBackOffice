@@ -8,7 +8,7 @@
 <script setup>
   import { defineProps} from "vue";
   const props = defineProps({
-    rsvpCount: Number,
+    rsvpCount: [Number, String],
     isAttending: Boolean
   });
 
