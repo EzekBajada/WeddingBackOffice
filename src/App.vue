@@ -15,12 +15,16 @@
       <rsvp-status :rsvp-count="notAttending" :is-attending="false"></rsvp-status>
     </div>
   </div>
+  <div class="flex flex-col p-3">
+    <rsvp-entry></rsvp-entry>
+  </div>
 </template>
 
 <script setup>
     import  axios  from 'axios'
     import { ref } from 'vue'
     import RsvpStatus from './components/RsvpStatus.vue';
+    import RsvpEntry from './components/RsvpEntry.vue';
     
     const attending = ref(0);
     const notAttending = ref(0);
