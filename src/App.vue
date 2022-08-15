@@ -16,6 +16,13 @@
     </div>
   </div>
   <div class="flex flex-col p-3">
+      <h1 class="flex items-center justify-center font-moonBold">
+        Total Guests
+      </h1>
+      <rsvp-status :rsvp-count="numberOfGuests" :is-attending="true" :is-number-of-guests="true">
+      </rsvp-status>
+  </div>
+  <div class="flex flex-col py-3 px-10">
     <rsvp-entry></rsvp-entry>
   </div>
 </template>
@@ -28,6 +35,7 @@
     
     const attending = ref(0);
     const notAttending = ref(0);
+    const numberOfGuests = ref(0);
 
     axios.get(process.env.VUE_APP_BASE_URL + 'Guests', {
       headers : {
@@ -37,5 +45,8 @@
     .then(response => {
       attending.value = response.data.filter(x=> x.isAttending).length;
       notAttending.value = response.data.filter(x=> !x.isAttending).length;
+      numberOfGuests.value = response.data.reduce((a,b) => {
+        return a + b.numberOfGuests
+      }, 0);
     });
 </script>

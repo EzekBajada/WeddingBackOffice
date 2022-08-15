@@ -4,11 +4,11 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
     import { defineProps} from "vue";
-    const props = defineProps({
-        rsvpCount: [Number, String],
-        isAttending: Boolean
-    });
-    console.log(props);
+    import { Guest } from '../models/Guest'
+
+    const props = defineProps<{
+         guest: Guest
+    }>()
 </script>
