@@ -22,13 +22,17 @@
       <rsvp-status :rsvp-count="numberOfGuests" :is-attending="true" :is-number-of-guests="true">
       </rsvp-status>
   </div>
+  <div class="flex flex-row p-3 font-moonBold">
+    <button class="p-2 bg-green-400 rounded-lg mr-3" @click="triggerFilter()">Attending</button>
+    <button class="p-2 bg-red-400 rounded-lg mr-3">Not attending</button>
+  </div>
   <div class="flex flex-col py-3 px-10">
-    <rsvp-entry></rsvp-entry>
+    <rsvp-entry class="my-3" v-for="guest in guests" :key="guest" :name="guest.name" :surname="guest.surname"></rsvp-entry>
   </div>
 </template>
 
 <script setup>
-    import  axios  from 'axios'
+    import axios from 'axios'
     import { ref } from 'vue'
     import RsvpStatus from './components/RsvpStatus.vue';
     import RsvpEntry from './components/RsvpEntry.vue';
@@ -36,13 +40,14 @@
     const attending = ref(0);
     const notAttending = ref(0);
     const numberOfGuests = ref(0);
+    const guests = ref();
 
     axios.get(process.env.VUE_APP_BASE_URL + 'Guests', {
       headers : {
         'X-API-Key': process.env.VUE_APP_API_KEY
       }
-    })
-    .then(response => {
+    }).then(response => {
+      guests.value = response.data;
       attending.value = response.data.filter(x=> x.isAttending).length;
       notAttending.value = response.data.filter(x=> !x.isAttending).length;
       numberOfGuests.value = response.data.reduce((a,b) => {
