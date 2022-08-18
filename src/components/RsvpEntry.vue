@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-row w-1/3 items-center justify-center bg-gray-800 h-10 font-moonBold p-3 rounded-lg text-white">
+    <div class="flex flex-row tablet:w-1/3 laptop:w-1/2 items-center justify-center bg-gray-800 tablet:text-sm laptop:text-lg font-moonBold p-3 rounded-lg text-white">
         <div>
             {{props.name}} {{props.surname}}
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center p-10 rounded-lg text-lg text-white font-moonBold"
+  <div class="flex items-center justify-center tablet:p-5 laptop:p-10 tablet:text-sm laptop:text-xl rounded-lg text-white font-moonBold"
       :class="classes">
     {{ props.rsvpCount }}
   </div>

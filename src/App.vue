@@ -2,27 +2,27 @@
   <div class="flex flex-row p-3">
     <div class="w-1/2 mr-2">
       <div>
-        <div class="flex items-center justify-center font-moonBold">
+        <div class="flex items-center justify-center font-moonBold tablet:text-sm laptop:text-xl">
           <h1>Attending</h1>
         </div>
         <rsvp-status :rsvp-count="attending" :is-attending="true"></rsvp-status>
       </div>
     </div>
     <div class="w-1/2 ml-2">
-      <div class="flex items-center justify-center font-moonBold">
+      <div class="flex items-center justify-center font-moonBold tablet:text-sm laptop:text-xl">
         <h1>Not Attending</h1>
       </div>
       <rsvp-status :rsvp-count="notAttending" :is-attending="false"></rsvp-status>
     </div>
   </div>
   <div class="flex flex-col p-3">
-      <h1 class="flex items-center justify-center font-moonBold">
+      <h1 class="flex items-center justify-center font-moonBold tablet:text-sm laptop:text-xl">
         Total Guests
       </h1>
       <rsvp-status :rsvp-count="numberOfGuests" :is-attending="true" :is-number-of-guests="true">
       </rsvp-status>
   </div>
-  <div class="flex flex-row p-3 items-center justify-center font-moonBold">
+  <div class="flex flex-row p-3 items-center justify-center font-moonBold tablet:text-sm laptop:text-xl">
     <button class="p-2 rounded-lg mr-3" @click="triggerFilter(true)" :class="{'bg-green-400' : isAttendingFilterProp != null && isAttendingFilterProp}">Attending</button>
     <button class="p-2 rounded-lg mr-3" @click="triggerFilter(false)" :class="{'bg-red-400' : isAttendingFilterProp != null && !isAttendingFilterProp}">Not attending</button>
     <button class="p-2 rounded-lg mr-3" @click="triggerFilter(true, true)">Clear Filters</button>
