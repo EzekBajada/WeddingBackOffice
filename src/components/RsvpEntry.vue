@@ -14,12 +14,13 @@
 </template>
 
 <script setup>
-    import { defineProps } from 'vue';
+    import { defineProps, ref } from 'vue';
     import axios from 'axios'
-    const classes = {
+
+    const classes = ref({
         'text-green-500': props.isAttending, 
         'text-red-500': !props.isAttending
-    }
+    })
 
     function deleteGuest(){
         axios.post(process.env.VUE_APP_BASE_URL + 'Guests/DeleteGuest', {
@@ -27,9 +28,12 @@
             surname: props.surname} ,{
             headers : {
                 'X-API-Key': process.env.VUE_APP_API_KEY
-            }}).then(response => {
-                console.log(response)
-                this.$forceUpdate();
+            }}).then(() => {
+                classes.value = { 
+                    ...classes.value, 
+                    'bg-orange-500': true
+                };
+                this.$emit('guest-deleted')
         });
     }
 

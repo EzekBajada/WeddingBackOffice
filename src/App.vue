@@ -28,7 +28,7 @@
     <button class="p-2 rounded-lg mr-3" @click="triggerFilter(true, true)">Clear Filters</button>
   </div>
   <div class="flex flex-col items-center justify-center py-3 px-10">
-    <rsvp-entry class="my-3" v-for="guest in guests" :key="guest" v-bind="guest"></rsvp-entry>
+    <rsvp-entry class="my-3" v-for="guest in guests" :key="guest" v-bind="guest" @guest-deleted="getGuests()"></rsvp-entry>
   </div>
 </template>
 
@@ -45,19 +45,21 @@
     const numberOfGuests = ref(0);
     const guests = ref();
 
-    axios.get(process.env.VUE_APP_BASE_URL + 'Guests', {
-      headers : {
-        'X-API-Key': process.env.VUE_APP_API_KEY
-      }
-    }).then(response => {
-      originalResponse.value = response;
-      guests.value = response.data;
-      attending.value = response.data.filter(x=> x.isAttending).length;
-      notAttending.value = response.data.filter(x=> !x.isAttending).length;
-      numberOfGuests.value = response.data.reduce((a,b) => {
-        return a + b.numberOfGuests
-      }, 0);
-    });
+    function getGuests() {
+      axios.get(process.env.VUE_APP_BASE_URL + 'Guests', {
+          headers : {
+            'X-API-Key': process.env.VUE_APP_API_KEY
+          }
+        }).then(response => {
+          originalResponse.value = response;
+          guests.value = response.data;
+          attending.value = response.data.filter(x=> x.isAttending).length;
+          notAttending.value = response.data.filter(x=> !x.isAttending).length;
+          numberOfGuests.value = response.data.reduce((a,b) => {
+            return a + b.numberOfGuests
+          }, 0);
+        });
+    }
 
     function triggerFilter(isAttendingFilter, clearAll){
       isAttendingFilterProp.value = isAttendingFilter;
@@ -70,4 +72,7 @@
         guests.value = originalResponse.value.data
       }
     }
+
+    // On created
+    getGuests();
 </script>
