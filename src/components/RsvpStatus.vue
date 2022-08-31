@@ -6,12 +6,7 @@
 </template>
 
 <script setup>
-  import { defineProps} from "vue";
-  const classes = {
-    'bg-purple-500': props.isNumberOfGuests,
-    'bg-green-500': props.isAttending && !props.isNumberOfGuests, 
-    'bg-red-500': !props.isAttending
-  }
+  import { defineProps } from "vue";
   
   const props = defineProps({
     rsvpCount: [Number, String],
@@ -19,4 +14,9 @@
     isNumberOfGuests: Boolean
   });
 
+  const classes = {
+    'bg-purple-500': props.isNumberOfGuests,
+    'bg-green-500': props.isAttending && !props.isNumberOfGuests, 
+    'bg-red-500': !props.isAttending
+  }
 </script>

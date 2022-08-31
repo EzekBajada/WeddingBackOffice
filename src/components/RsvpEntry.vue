@@ -14,8 +14,9 @@
 </template>
 
 <script setup>
-    import { defineProps, ref } from 'vue';
+    import { defineProps, ref, defineEmits } from 'vue';
     import axios from 'axios'
+    const emit = defineEmits('guest-deleted', 'submit')
 
     const classes = ref({
         'text-green-500': props.isAttending, 
@@ -24,17 +25,21 @@
 
     function deleteGuest(){
         axios.post(process.env.VUE_APP_BASE_URL + 'Guests/DeleteGuest', {
-            name: props.name,
-            surname: props.surname} ,{
-            headers : {
-                'X-API-Key': process.env.VUE_APP_API_KEY
-            }}).then(() => {
+                name: props.name,
+                surname: props.surname
+            },{
+                headers : {
+                    'D-API-Key': process.env.VUE_APP_DELETE_API_KEY
+            }})
+            .then(() => {
                 classes.value = { 
                     ...classes.value, 
                     'bg-orange-500': true
                 };
-                this.$emit('guest-deleted')
+            emit('guest-deleted')
         });
+
+        emit('guest-deleted')
     }
 
     const props = defineProps({
