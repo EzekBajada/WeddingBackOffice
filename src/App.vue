@@ -27,7 +27,7 @@
     <button class="p-2 rounded-lg mr-3" @click="triggerFilter(false)" :class="{'bg-red-400' : isAttendingFilterProp != null && !isAttendingFilterProp}">Not attending</button>
     <button class="p-2 rounded-lg mr-3" @click="triggerFilter(true, true)">Clear Filters</button>
   </div>
-  <div class="flex flex-col items-center justify-center py-3 px-10">
+  <div class="flex flex-col items-center justify-center py-3 laptop:px-10 tablet:px-2">
     <rsvp-entry class="my-3" v-for="guest in guests" :key="guest" v-bind="guest" @guest-deleted="getGuests()"></rsvp-entry>
   </div>
 </template>
