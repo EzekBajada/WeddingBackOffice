@@ -11,32 +11,32 @@
     </div>
 
     <div
-      class="rounded-lg tablet:ml-2 laptop:ml-10 p-1 text-white"
-      :class="{ 'text-green-500': foodToleranceDto.vegetarian }"
+      class="rounded-lg tablet:ml-2 laptop:ml-10 p-1"
+      :class="{ 'text-green-500': foodToleranceDto.vegetarian, 'text-white': !foodToleranceDto.vegetarian }"
     >
       <font-awesome-icon icon="leaf" />
     </div>
     <div
-      class="rounded-lg tablet:ml-2 laptop:ml-10 p-1 text-white"
-      :class="{ 'text-green-500': foodToleranceDto.vegan }"
+      class="rounded-lg tablet:ml-2 laptop:ml-10 p-1"
+      :class="{ 'text-green-500': foodToleranceDto.vegan, 'text-white': !foodToleranceDto.vegan }"
     >
       <font-awesome-icon icon="egg" />
     </div>
     <div
-      class="rounded-lg tablet:ml-2 laptop:ml-10 p-1 text-white"
-      :class="{ 'text-green-500': foodToleranceDto.gluten }"
+      class="rounded-lg tablet:ml-2 laptop:ml-10 p-1"
+      :class="{ 'text-green-500': foodToleranceDto.gluten, 'text-white': !foodToleranceDto.gluten }"
     >
       <font-awesome-icon icon="bread-slice" />
     </div>
     <div
-      class="rounded-lg tablet:ml-2 laptop:ml-10 p-1 text-white"
-      :class="{ 'text-green-500': foodToleranceDto.lactose }"
+      class="rounded-lg tablet:ml-2 laptop:ml-10 p-1"
+      :class="{ 'text-green-500': foodToleranceDto.lactose, 'text-white': !foodToleranceDto.lactose }"
     >
       <font-awesome-icon icon="cow" />
     </div>
     <div
-      class="rounded-lg tablet:ml-2 laptop:ml-10 p-1 text-white"
-      :class="{ 'text-green-500': foodToleranceDto.peanutAllergy }"
+      class="rounded-lg tablet:ml-2 laptop:ml-10 p-1"
+      :class="{ 'text-green-500': foodToleranceDto.peanutAllergy, 'text-white': !foodToleranceDto.peanutAllergy }"
     >
       <font-awesome-icon icon="lemon" />
     </div>
